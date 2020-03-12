@@ -745,7 +745,7 @@ var DogeBox;
 					--fifth-note: #7b74ad;
 					--white-piano-key: #bbb;
 					--black-piano-key: #444;
-					--pitch1-secondary-channel: #c9a500;
+					--pitch1-secondary-channel: #c7ac00;
 					--pitch1-primary-channel:   #fcf403;
 					--pitch1-secondary-note:    #c7c700;
 					--pitch1-primary-note:      #fcf403;
