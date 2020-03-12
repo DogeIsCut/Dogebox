@@ -109,7 +109,7 @@ var DogeBox;
         { name: "hard fade", isSeamless: false, attackSeconds: 0.0, releases: true, releaseTicks: 48, slides: false, slideTicks: 3 },
         { name: "medium fade", isSeamless: false, attackSeconds: 0.0125, releases: true, releaseTicks: 72, slides: false, slideTicks: 3 },
         { name: "soft fade", isSeamless: false, attackSeconds: 0.06, releases: true, releaseTicks: 96, slides: false, slideTicks: 6 },
-		{ name: "hard slide", isSeamless: false, attackSeconds: 0.0, releases: true, releaseTicks: 48, slides: true, slideTicks: 3 }
+	{ name: "hard slide", isSeamless: false, attackSeconds: 0.0, releases: true, releaseTicks: 48, slides: true, slideTicks: 3 }
     ]);
     Config.vibratos = toNameMap([
         { name: "none", amplitude: 0.0, periodsSeconds: [0.14], delayParts: 0 },
@@ -130,9 +130,9 @@ var DogeBox;
         { name: "piano", spread: 0.01, offset: 0.0, volume: 1.0, sign: 0.7 },
     ]);
     Config.effectsNames = ["none", "reverb", "chorus", "chorus & reverb"];
-    Config.volumeRange = 8;
+    Config.volumeRange = 16;
     Config.volumeLogScale = -0.5;
-    Config.panCenter = 4;
+    Config.panCenter = 8;
     Config.panMax = Config.panCenter * 2;
     Config.chords = toNameMap([
         { name: "harmony", harmonizes: true, customInterval: false, arpeggiates: false, isCustomInterval: false, strumParts: 0 },
@@ -235,15 +235,15 @@ var DogeBox;
     Config.harmonicsMax = (1 << Config.harmonicsControlPointBits) - 1;
     Config.harmonicsWavelength = 1 << 11;
     Config.pulseWidthRange = 8;
-    Config.pitchChannelCountMin = 1;
-    Config.pitchChannelCountMax = 6;
+    Config.pitchChannelCountMin = 0;
+    Config.pitchChannelCountMax = 12;
     Config.noiseChannelCountMin = 0;
-    Config.noiseChannelCountMax = 3;
+    Config.noiseChannelCountMax = 6;
     Config.noiseInterval = 6;
     Config.pitchesPerOctave = 12;
-    Config.drumCount = 12;
-    Config.pitchOctaves = 7;
-    Config.windowOctaves = 3;
+    Config.drumCount = 24;
+    Config.pitchOctaves = 14;
+    Config.windowOctaves = 6;
     Config.scrollableOctaves = Config.pitchOctaves - Config.windowOctaves;
     Config.windowPitchCount = Config.windowOctaves * Config.pitchesPerOctave + 1;
     Config.maxPitch = Config.pitchOctaves * Config.pitchesPerOctave;
@@ -407,15 +407,15 @@ var DogeBox;
             return null;
         }
     }
-    EditorConfig.version = "1.0.4";
+    EditorConfig.version = "1.0.5";
     EditorConfig.versionDisplayName = "DogeBox " + EditorConfig.version;
     EditorConfig.presetCategories = DogeBox.toNameMap([
         { name: "Custom Instruments", presets: DogeBox.toNameMap([
                 { name: "chip wave", customType: 0},
-		{ name: "chip wave noise", isNoise: true, customType: 0},
+		{ name: "chip wave noise", isNoise: false, customType: 0},
                 { name: "FM (expert)", customType: 1 },
 		{ name: "basic noise", isNoise: true, customType: 2},
-		{ name: "basic noise pitch", isNoise: false, customType: 2},
+		{ name: "basic noise pitch", isNoise: true, customType: 2},
                 { name: "spectrum", customType: 3 },
 		{ name: "drumset", isNoise: true, customType: 4 },
                 { name: "harmonics", customType: 5 },
@@ -606,8 +606,8 @@ var DogeBox;
                 { name: "metal pipe", midiProgram: 117, isNoise: true, midiSubharmonicOctaves: -1.5, settings: { "type": "spectrum", "effects": "reverb", "transition": "hard fade", "chord": "strum", "filterCutoffHz": 8000, "filterResonance": 14, "filterEnvelope": "twang 2", "spectrum": [29, 43, 86, 43, 43, 43, 43, 43, 100, 29, 14, 14, 100, 14, 14, 0, 0, 0, 0, 0, 14, 29, 29, 14, 0, 0, 14, 29, 0, 0] } },
             ]) },
         { name: "Novelty Presets", presets: DogeBox.toNameMap([
-		{ name: "dubsetp buzz", midiProgram: 125, isNoise: false, midiSubharmonicOctaves: -1, settings: { "type": "noise", "effects": "none", "transition": "slide", "chord": "harmony", "filterCutoffHz": 8000, "filterResonance": 0, "filterEnvelope": "steady", "wave": "buzz" } },
-		{ name: "dubsetp synth", midiProgram: 125, isNoise: false, midiSubharmonicOctaves: -1, settings: { "type": "noise", "effects": "none", "transition": "slide", "chord": "harmony", "filterCutoffHz": 8000, "filterResonance": 0, "filterEnvelope": "steady", "wave": "clang" } },
+		{ name: "dubstep buzz", midiProgram: 125, isNoise: false, midiSubharmonicOctaves: -1, settings: { "type": "noise", "effects": "none", "transition": "slide", "chord": "harmony", "filterCutoffHz": 8000, "filterResonance": 0, "filterEnvelope": "steady", "wave": "buzz" } },
+		{ name: "dubstep synth", midiProgram: 125, isNoise: false, midiSubharmonicOctaves: -1, settings: { "type": "noise", "effects": "none", "transition": "slide", "chord": "harmony", "filterCutoffHz": 8000, "filterResonance": 0, "filterEnvelope": "steady", "wave": "clang" } },
                 { name: "guitar fret noise", midiProgram: 120, generalMidi: true, settings: { "type": "spectrum", "effects": "reverb", "transition": "hard", "chord": "harmony", "filterCutoffHz": 8000, "filterResonance": 86, "filterEnvelope": "flare 1", "spectrum": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 0, 0, 0, 29, 14, 0, 0, 43, 0, 43, 0, 71, 43, 0, 57, 0] } },
                 { name: "fifth saw lead", midiProgram: 86, generalMidi: true, midiSubharmonicOctaves: 1, settings: { "type": "chip", "effects": "chorus & reverb", "transition": "hard fade", "chord": "harmony", "filterCutoffHz": 2828, "filterResonance": 57, "filterEnvelope": "twang 3", "wave": "sawtooth", "interval": "fifth", "vibrato": "none" } },
                 { name: "fifth swell", midiProgram: 86, midiSubharmonicOctaves: 1, settings: { "type": "chip", "effects": "chorus & reverb", "transition": "hard fade", "chord": "harmony", "filterCutoffHz": 2000, "filterResonance": 57, "filterEnvelope": "swell 3", "wave": "sawtooth", "interval": "fifth", "vibrato": "none" } },
