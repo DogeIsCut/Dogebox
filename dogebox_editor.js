@@ -415,7 +415,7 @@ var DogeBox;
 		{ name: "chip wave noise", isNoise: true, customType: 0 },
                 { name: "FM (expert)", customType: 1 },
 		{ name: "basic noise", isNoise: true, customType: 2},
-		{ name: "basic noise pitch", customType: 2},
+		{ name: "basic noise pitch", isNoise: false, customType: 2},
                 { name: "spectrum", customType: 3 },
 		{ name: "drumset", isNoise: true, customType: 4 },
                 { name: "harmonics", customType: 5 },
