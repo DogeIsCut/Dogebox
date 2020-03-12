@@ -414,8 +414,10 @@ var DogeBox;
                 { name: "chip wave", customType: 0 },
                 { name: "FM (expert)", customType: 1 },
                 { name: "basic noise", customType: 2 },
+		{ name: "basic noise", isNoise: false, customType: 2},
                 { name: "spectrum", customType: 3 },
                 { name: "drumset", customType: 4 },
+		{ name: "drumset", isNoise: false, customType: 4 },
                 { name: "harmonics", customType: 5 },
                 { name: "pulse width", customType: 6 },
             ]) },
@@ -733,7 +735,7 @@ var DogeBox;
         "dark classic": `
 				:root {
 					--page-margin: #0d0063;
-					--editor-background: #0d0063;
+					--editor-background: #473626;
 					--hover-preview: white;
 					--playhead: white;
 					--primary-text: white;
